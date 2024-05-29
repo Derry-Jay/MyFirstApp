@@ -7,6 +7,6 @@ data class ItemBase(
 
     @SerializedName("status") var status: Int? = null,
     @SerializedName("message") var message: String? = null,
-    @SerializedName("data") var data: List<Item>? = null
+    @SerializedName("data") var data: List<Item>? = null,
 
-){}
+    ) {}

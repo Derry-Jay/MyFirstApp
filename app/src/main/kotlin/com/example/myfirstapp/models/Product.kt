@@ -9,11 +9,11 @@ data class Product(
     val createdAt: String,
     val updatedAt: String,
     val category: ProductCategory,
-    val discountPercentage : Double,
-    val rating : Double,
-    val stock : Int,
-    val brand : String,
-    val thumbnail : String
+    val discountPercentage: Double,
+    val rating: Double,
+    val stock: Int,
+    val brand: String,
+    val thumbnail: String,
 ) {
     override fun equals(other: Any?): Boolean {
         return (other is Product) && (this.id == other.id)

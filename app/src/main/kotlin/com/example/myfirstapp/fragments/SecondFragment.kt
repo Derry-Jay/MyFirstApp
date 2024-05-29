@@ -1,24 +1,28 @@
 package com.example.myfirstapp.fragments
 
+//import androidx.core.view.doOnPreDraw
+//import androidx.navigation.fragment.findNavController
+//import com.example.myfirstapp.models.City
+//import com.example.myfirstapp.models.CityBase
+//import kotlinx.coroutines.GlobalScope
+//import kotlinx.coroutines.Job
+//import kotlinx.coroutines.launch
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-//import androidx.core.view.doOnPreDraw
-//import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfirstapp.R
 import com.example.myfirstapp.adapters.ProductsAdapter
 import com.example.myfirstapp.databinding.FragmentSecondBinding
-import com.example.myfirstapp.extensions.*
-//import com.example.myfirstapp.models.City
-//import com.example.myfirstapp.models.CityBase
+import com.example.myfirstapp.extensions.apiLink
+import com.example.myfirstapp.extensions.navCon
+import com.example.myfirstapp.extensions.retrofitInstance
+import com.example.myfirstapp.extensions.showSnackBar
+import com.example.myfirstapp.extensions.stringFromResource
 import com.example.myfirstapp.models.Product
 import com.example.myfirstapp.models.ProductBase
-//import kotlinx.coroutines.GlobalScope
-//import kotlinx.coroutines.Job
-//import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +40,7 @@ class SecondFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,11 +59,12 @@ class SecondFragment : Fragment() {
         // ArrayList of class City
         var data: ArrayList<Product>
         try {
-            val call = view.stringFromResource(R.string.base_url_1).retrofitInstance.apiLink.getProducts()
+            val call =
+                view.stringFromResource(R.string.base_url_1).retrofitInstance.apiLink.getProducts()
             call.enqueue(object : Callback<ProductBase> {
                 override fun onResponse(
                     call: Call<ProductBase>,
-                    response: Response<ProductBase>
+                    response: Response<ProductBase>,
                 ) {
 
                     data = response.body()?.products as ArrayList<Product>
@@ -70,7 +75,13 @@ class SecondFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<ProductBase>, t: Throwable) {
-                    return view.showSnackBar(t.message ?: "", 2, t.localizedMessage ?: "", null,null)
+                    return view.showSnackBar(
+                        t.message ?: "",
+                        2,
+                        t.localizedMessage ?: "",
+                        null,
+                        null
+                    )
                 }
             })
         } catch (e: Exception) {

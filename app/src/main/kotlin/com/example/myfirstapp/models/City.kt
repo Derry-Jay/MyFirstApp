@@ -1,6 +1,12 @@
 package com.example.myfirstapp.models
 
-data class City (val ID: Int, val Name: String, val CountryCode: String, val District: String, val Population: Int){
+data class City(
+    val ID: Int,
+    val Name: String,
+    val CountryCode: String,
+    val District: String,
+    val Population: Int,
+) {
     override fun equals(other: Any?): Boolean {
         return (other is City) && (this.ID == other.ID)
     }

@@ -1,23 +1,23 @@
 package com.example.myfirstapp.fragments
 
 
-import com.example.myfirstapp.adapters.CustomAdapter
-import com.example.myfirstapp.models.ListItem
+//import android.net.wifi.WifiManager
+//import android.text.format.Formatter
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-//import android.net.wifi.WifiManager
-//import android.text.format.Formatter
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfirstapp.R
+import com.example.myfirstapp.adapters.CustomAdapter
 import com.example.myfirstapp.data.isEmulator
 import com.example.myfirstapp.databinding.FragmentThirdBinding
 import com.example.myfirstapp.extensions.assetFiles
 import com.example.myfirstapp.extensions.firstLetterCapitalized
 import com.example.myfirstapp.extensions.navCon
+import com.example.myfirstapp.models.ListItem
 import java.io.InputStream
 
 
@@ -30,7 +30,7 @@ class ThirdFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
 
         _binding = FragmentThirdBinding.inflate(inflater, container, false)

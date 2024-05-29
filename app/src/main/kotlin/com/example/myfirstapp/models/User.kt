@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class User(
     @SerializedName("role") var role: String? = null,
     @SerializedName("_id") var Id: String? = null,
-    @SerializedName("name") var name: String? = null
+    @SerializedName("name") var name: String? = null,
 ) {
     override fun equals(other: Any?): Boolean {
         return other is User && this.Id == other.Id

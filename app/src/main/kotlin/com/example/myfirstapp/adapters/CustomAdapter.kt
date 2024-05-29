@@ -1,11 +1,11 @@
 package com.example.myfirstapp.adapters
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfirstapp.R
 import com.example.myfirstapp.extensions.showSnackBar
@@ -35,7 +35,13 @@ class CustomAdapter(private val mList: List<ListItem>) :
         holder.textView.text = itemsViewModel.text
 
         holder.textView.setOnClickListener {
-            holder.textView.showSnackBar(itemsViewModel.text, Toast.LENGTH_SHORT, itemsViewModel.text, null,null)
+            it?.showSnackBar(
+                itemsViewModel.text,
+                Toast.LENGTH_SHORT,
+                itemsViewModel.text,
+                null,
+                null
+            )
         }
     }
 

@@ -2,7 +2,7 @@ package com.example.myfirstapp.models
 
 
 data class ProductCategory(
-    val id: Int, val name: String, val image: String, val createdAt: String, val updatedAt: String
+    val id: Int, val name: String, val image: String, val createdAt: String, val updatedAt: String,
 ) {
     override fun equals(other: Any?): Boolean {
         return (other is ProductCategory) && (this.id == other.id)

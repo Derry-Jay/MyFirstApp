@@ -1,14 +1,14 @@
 package com.example.myfirstapp.adapters
 
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.myfirstapp.R
-import android.view.LayoutInflater
-import com.example.myfirstapp.models.Item
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myfirstapp.R
 import com.example.myfirstapp.extensions.showSnackBar
+import com.example.myfirstapp.models.Item
 
 class ItemsAdapter(private val iList: ArrayList<Item>) :
     RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
@@ -30,7 +30,13 @@ class ItemsAdapter(private val iList: ArrayList<Item>) :
         holder.textViewCreatedBy.text = item.createdBy?.name ?: ""
 
         holder.itemView.setOnClickListener {
-            holder.itemView.showSnackBar(item.title ?: "", Toast.LENGTH_SHORT, item.description, null,null)
+            it?.showSnackBar(
+                item.title ?: "",
+                Toast.LENGTH_SHORT,
+                item.description,
+                null,
+                null
+            )
         }
     }
 

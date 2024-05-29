@@ -1,5 +1,5 @@
 package com.example.myfirstapp.models
 
 data class ProductBase(
-   val products : List<Product>
+    val products: List<Product>,
 )

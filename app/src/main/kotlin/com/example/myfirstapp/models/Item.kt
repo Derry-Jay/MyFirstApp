@@ -13,7 +13,7 @@ data class Item(
     @SerializedName("createdAt") var createdAt: String? = null,
     @SerializedName("updatedAt") var updatedAt: String? = null,
     @SerializedName("slug") var slug: String? = null,
-    @SerializedName("image") var image: String? = null
+    @SerializedName("image") var image: String? = null,
 ) {
     override fun equals(other: Any?): Boolean {
         return (other is Item) && (this.Id == other.Id)

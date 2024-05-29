@@ -7,9 +7,9 @@ data class ItemCategory(
 
     @SerializedName("_id") var Id: String? = null,
     @SerializedName("name") var name: String? = null,
-    @SerializedName("slug") var slug: String? = null
+    @SerializedName("slug") var slug: String? = null,
 
-) {
+    ) {
     override fun equals(other: Any?): Boolean {
         return (other is ItemCategory) && (this.Id == other.Id)
     }

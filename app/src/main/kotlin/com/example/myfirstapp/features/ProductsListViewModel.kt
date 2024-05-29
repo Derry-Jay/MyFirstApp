@@ -17,12 +17,13 @@ class ProductsListViewModel @Inject constructor(
 //    private val productsUseCase: ProductsUseCase
 ) : ViewModel() {
 
-    private val _productsList : MutableStateFlow<ProductsListState> = MutableStateFlow(
-        ProductsListState.Initial)
-    val productsList : StateFlow<ProductsListState> = _productsList
+    private val _productsList: MutableStateFlow<ProductsListState> = MutableStateFlow(
+        ProductsListState.Initial
+    )
+    val productsList: StateFlow<ProductsListState> = _productsList
 
-    suspend fun getList(){
-        viewModelScope.launch(Dispatchers.IO){
+    suspend fun getList() {
+        viewModelScope.launch(Dispatchers.IO) {
 
 //           when( val response = productsUseCase.execute()) {
 //               is Extensions.Scuess -> _productsList.value = ProductsListState.Success(response.data as List<Product>)
