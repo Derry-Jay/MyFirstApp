@@ -2,8 +2,6 @@ package com.example.myfirstapp.fragments
 
 //import androidx.core.view.doOnPreDraw
 //import androidx.navigation.fragment.findNavController
-//import com.example.myfirstapp.models.City
-//import com.example.myfirstapp.models.CityBase
 //import kotlinx.coroutines.GlobalScope
 //import kotlinx.coroutines.Job
 //import kotlinx.coroutines.launch
@@ -16,9 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfirstapp.R
 import com.example.myfirstapp.adapters.ProductsAdapter
 import com.example.myfirstapp.databinding.FragmentSecondBinding
-import com.example.myfirstapp.extensions.apiLink
+import com.example.myfirstapp.extensions.api
 import com.example.myfirstapp.extensions.navCon
-import com.example.myfirstapp.extensions.retrofitInstance
 import com.example.myfirstapp.extensions.showSnackBar
 import com.example.myfirstapp.extensions.stringFromResource
 import com.example.myfirstapp.models.Product
@@ -60,12 +57,14 @@ class SecondFragment : Fragment() {
         var data: ArrayList<Product>
         try {
             val call =
-                view.stringFromResource(R.string.base_url_1).retrofitInstance.apiLink.getProducts()
+                (view.stringFromResource(R.string.base_url_1)).api.getProducts()
             call.enqueue(object : Callback<ProductBase> {
                 override fun onResponse(
                     call: Call<ProductBase>,
                     response: Response<ProductBase>,
                 ) {
+
+                    println(response.body())
 
                     data = response.body()?.products as ArrayList<Product>
 
@@ -75,6 +74,8 @@ class SecondFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<ProductBase>, t: Throwable) {
+                    println(t.message)
+                    println(t.localizedMessage)
                     return view.showSnackBar(
                         t.message ?: "",
                         2,

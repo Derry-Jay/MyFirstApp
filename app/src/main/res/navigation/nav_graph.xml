@@ -40,10 +40,27 @@
             android:id="@+id/action_ThirdFragment_to_fourthFragment"
             app:destination="@id/fourthFragment"
             app:popUpTo="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_ThirdFragment_to_fifthFragment"
+            app:destination="@id/fifthFragment" />
     </fragment>
     <fragment
         android:id="@+id/fourthFragment"
         android:name="com.example.myfirstapp.fragments.FourthFragment"
         android:label="fragment_fourth"
-        tools:layout="@layout/fragment_fourth" />
+        tools:layout="@layout/fragment_fourth">
+        <action
+            android:id="@+id/action_fourthFragment_to_sixthFragment"
+            app:destination="@id/sixthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fifthFragment"
+        android:name="com.example.myfirstapp.fragments.FifthFragment"
+        android:label="fragment_fifth"
+        tools:layout="@layout/fragment_fifth" />
+    <fragment
+        android:id="@+id/sixthFragment"
+        android:name="com.example.myfirstapp.fragments.SixthFragment"
+        android:label="fragment_sixth"
+        tools:layout="@layout/fragment_sixth" />
 </navigation>

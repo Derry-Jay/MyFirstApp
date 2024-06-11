@@ -10,8 +10,11 @@ import com.example.myfirstapp.extensions.manufacturerContains
 import com.example.myfirstapp.extensions.modelContains
 import com.example.myfirstapp.extensions.productContains
 import com.example.myfirstapp.extensions.regexFromString
+import com.google.gson.Gson
 import java.time.LocalDate
 import java.time.LocalDateTime
+
+val gson: Gson = Gson()
 
 val today2: LocalDate = LocalDate.now()
 

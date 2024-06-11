@@ -1,5 +1,7 @@
 package com.example.myfirstapp.models
 
+import com.google.gson.Gson
+
 data class Product(
     val id: Int,
     val title: String,
@@ -15,6 +17,49 @@ data class Product(
     val brand: String,
     val thumbnail: String,
 ) {
+
+    fun Product.fromJsonUsingGson(json: String): Product {
+        return try {
+            Gson().fromJson(json, this::class.java)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Product(
+                id,
+                title,
+                price,
+                description,
+                images,
+                createdAt,
+                updatedAt,
+                category,
+                discountPercentage,
+                rating,
+                stock,
+                brand,
+                thumbnail
+            )
+        }
+    }
+
+    fun Product.fromJsonUsingMoshi(json: String): Product {
+        return com.squareup.moshi.Moshi.Builder().build().adapter(this::class.java).fromJson(json)
+            ?: Product(
+                id,
+                title,
+                price,
+                description,
+                images,
+                createdAt,
+                updatedAt,
+                category,
+                discountPercentage,
+                rating,
+                stock,
+                brand,
+                thumbnail
+            )
+    }
+
     override fun equals(other: Any?): Boolean {
         return (other is Product) && (this.id == other.id)
     }

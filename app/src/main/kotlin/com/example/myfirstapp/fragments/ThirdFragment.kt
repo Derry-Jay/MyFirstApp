@@ -88,7 +88,7 @@ class ThirdFragment : Fragment() {
         recyclerview.adapter = adapter
 
         binding.floating.setOnClickListener {
-            view.navCon.navigate(R.id.action_ThirdFragment_to_fourthFragment)
+            view.navCon.navigate(R.id.action_ThirdFragment_to_fifthFragment)
         }
 
         binding.appBarImage.setOnClickListener {

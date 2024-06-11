@@ -1,5 +1,7 @@
 package com.example.myfirstapp.extensions
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build.BRAND
 import android.os.Build.DEVICE
@@ -10,6 +12,7 @@ import android.os.Build.MODEL
 import android.os.Build.PRODUCT
 import android.view.View
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.navigation.NavController
@@ -312,6 +315,19 @@ fun View.stringFromResource(resId: Int): String {
 fun View.getDeviceService(name: String): Any {
     return context.getSystemService(name)
 }
+
+val View.hasLocationPermission: Boolean
+    get() {
+        return arrayOf(
+            ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ), ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+        ).contains(PackageManager.PERMISSION_GRANTED)
+    }
 
 val String?.retrofitInstance: Retrofit
     get() {

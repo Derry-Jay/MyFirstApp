@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfirstapp.R
 import com.example.myfirstapp.adapters.ItemsAdapter
 import com.example.myfirstapp.databinding.FragmentFourthBinding
-import com.example.myfirstapp.extensions.apiLink
-import com.example.myfirstapp.extensions.retrofitInstance
+import com.example.myfirstapp.extensions.api
 import com.example.myfirstapp.extensions.showSnackBar
 import com.example.myfirstapp.extensions.stringFromResource
 import com.example.myfirstapp.models.Item
@@ -50,7 +49,7 @@ class FourthFragment : Fragment() {
         var data: ArrayList<Item>
         try {
             val call =
-                view.stringFromResource(R.string.base_url_2).retrofitInstance.apiLink.getItems()
+                view.stringFromResource(R.string.base_url_2).api.getItems()
             call.enqueue(object : Callback<ItemBase> {
                 override fun onResponse(call: Call<ItemBase>, response: Response<ItemBase>) {
                     data = (response.body()?.data as ArrayList<Item>?) ?: ArrayList()

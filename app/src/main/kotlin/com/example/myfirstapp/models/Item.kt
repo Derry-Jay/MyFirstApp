@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 
 data class Item(
-    @SerializedName("_id") var Id: String? = null,
+    @SerializedName("_id") var id: String? = null,
     @SerializedName("title") var title: String? = null,
     @SerializedName("price") var price: Int? = null,
     @SerializedName("category") var category: ItemCategory? = ItemCategory(),
@@ -16,11 +16,11 @@ data class Item(
     @SerializedName("image") var image: String? = null,
 ) {
     override fun equals(other: Any?): Boolean {
-        return (other is Item) && (this.Id == other.Id)
+        return (other is Item) && (this.id == other.id)
     }
 
     override fun hashCode(): Int {
-        var result = Id?.hashCode() ?: 0
+        var result = id?.hashCode() ?: 0
         result = 31 * result + (title?.hashCode() ?: 0)
         result = 31 * result + (price ?: 0)
         result = 31 * result + (category?.hashCode() ?: 0)

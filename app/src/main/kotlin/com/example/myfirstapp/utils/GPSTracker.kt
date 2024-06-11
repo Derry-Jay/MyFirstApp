@@ -1,25 +1,25 @@
 package com.example.myfirstapp.utils
 
+//import android.os.Bundle
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-//import android.os.Bundle
 import android.os.IBinder
 import android.provider.Settings
 import android.util.Log
+import android.view.View
 import androidx.core.app.ActivityCompat
 
 /**
  * Created by ciprus on 1/8/16.
  */
 
-class GPSTracker(private val mContext: Context) : Service(), LocationListener {
+class GPSTracker(private val v: View) : Service(), LocationListener {
     // flag for GPS status
     private var isGPSEnabled: Boolean = false
 
@@ -43,8 +43,7 @@ class GPSTracker(private val mContext: Context) : Service(), LocationListener {
 
     private fun getLocation(): Location? {
         try {
-            locationManager = mContext
-                .getSystemService(LOCATION_SERVICE) as LocationManager?
+            locationManager = getDeviceService(v, LOCATION_SERVICE) as LocationManager?
 
             // getting GPS status
             isGPSEnabled = locationManager
@@ -174,7 +173,7 @@ class GPSTracker(private val mContext: Context) : Service(), LocationListener {
      * On pressing Settings button will lauch Settings Options
      */
     fun showSettingsAlert() {
-        val alertDialog = AlertDialog.Builder(mContext)
+        val alertDialog = AlertDialog.Builder(v.context)
         // Setting Dialog Title
         alertDialog.setTitle("GPS is settings")
 
@@ -184,7 +183,7 @@ class GPSTracker(private val mContext: Context) : Service(), LocationListener {
         // On pressing Settings button
         alertDialog.setPositiveButton("Settings") { dialog, which ->
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-            mContext.startActivity(intent)
+            v.context.startActivity(intent)
             println(dialog)
             println(which)
         }
